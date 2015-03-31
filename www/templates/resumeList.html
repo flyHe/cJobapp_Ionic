@@ -1,0 +1,38 @@
+<ion-view>
+<ion-nav-bar class="bar-dark">
+     <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    <h1 class="title">简历详单</h1>
+    </ion-nav-bar>
+  <ion-content class="has-header">
+<!--   ng-repeat="team in division.divisionStandings" -->
+   <a href="#/app/resumeDetail/{{resume.id}}" class="item item-icon-right" ng-repeat="resume in resumes">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="assertive">{{resume.userName}}</h2>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                    <h3>投递时间:</h3>
+                    <h4 class="positive">{{resume.deliveryDate}}</h4>
+                    </div>
+                    <div class="col">
+                    <h3>联系电话:</h3>
+                    <h4 class="positive">{{resume.userPhone}}</h4>
+                    </div>
+                </div>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <ion-infinite-scroll
+            on-infinite="loadMore()"
+            ng-if="moreDataCanBeLoaded"
+            icon="ion-loading-c"
+            distance="1%">
+    </ion-infinite-scroll>
+     <p style="color: lightskyblue;text-align: center" ng-if="!moreDataCanBeLoaded">没有更多的内容啦</p>
+   <br>
+  </ion-content>
+  </ion-view>

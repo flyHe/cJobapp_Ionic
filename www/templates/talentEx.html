@@ -1,0 +1,95 @@
+<ion-view>
+<ion-nav-bar class="bar-dark">
+     <ion-nav-back-button class="button-clear icon ion-ios7-arrow-back"></ion-nav-back-button>
+    <!-- <button menu-toggle="left" class="button button-icon icon ion-navicon"></button> -->
+    <h1 class="title">人才信息</h1>
+    </ion-nav-bar>
+  <ion-content class="has-header">
+   <div class="list card">
+            <div class="item ">
+              <h2 ng-bind-html="talentEx.userName"  class="assertive"> </h2>
+              
+            </div>
+            <div class="item item-divider">
+            个人资料
+            </div>
+            <div class="item item-body item-icon-right">
+             <p><b>通讯地址:</b><span ng-bind-html="talentEx.txdz" class="positive"></span></p>
+			 <!-- <p ng-if="contactCanBeLoaded">联系电话:{{talentExContact.userPhone}}</p> -->
+             <p ng-if="contactCanBeLoaded">电子邮件:{{talentExContact.email}}</p>
+            </div>
+            <div class="item item-button-right" ng-if="contactCanBeLoaded">
+             <p><b>联系电话:</b><span ng-bind-html="talentExContact.userPhone" class="positive"></span></p>
+            </div>
+               <!-- <ion-checkbox ng-model="isChecked0" class="item item-divider ">求职意向</ion-checkbox>
+                <a class="item item-body item-icon-right" ng-repeat="graduate in talentEx." ng-if="isChecked0">
+                 <p>时间:<span ng-bind-html="graduate.qssj"></span>至<span ng-bind-html="graduate.jzsj"></p>
+                 <p><b>学校:</b><span ng-bind-html=""></span></p>
+                 <p><b>专业:</b><span ng-bind-html=""></span></p>
+                 </a>
+                  <ion-checkbox ng-model="isChecked5" class="item item-divider ">证书</ion-checkbox>
+                 <a class="item item-body item-icon-right" ng-repeat="ski in talentEx." ng-if="isChecked5">
+                 <p><b>技能名称:</b><span ng-bind-html=""></span></p>
+                 <p><b>技能水平:</b><span ng-bind-html=""></span></p>
+                 </a> -->
+
+                 <ion-list>
+                           <ion-item class="item-stable"
+                                     ng-click="toggleGroup(talentEx.graduates)"
+                                     ng-class="{active: isGroupShown(talentEx.graduates)}">
+                               <i class="icon" ng-class="isGroupShown(talentEx.graduates) ? 'ion-minus' : 'ion-plus'"></i>
+                             &nbsp;
+                             <b>教育经历</b>
+                           </ion-item>
+                           <ion-item class="item-accordion"
+                                     ng-repeat="graduate in talentEx.graduates"
+                                     ng-show="isGroupShown(talentEx.graduates)">
+                             <p><b>时间:</b>{{graduate.qssj| date:"yyyy-MM-dd"}}至{{graduate.jzsj| date:"yyyy-MM-dd"}}</p>
+                             <p><b>学校:</b><span ng-bind-html="graduate.xxmc"></span></p>
+                             <p><b>专业:</b><span ng-bind-html="graduate.zyms"></span></p>
+                           </ion-item>
+                           <ion-item class="item-stable"
+                                     ng-click="toggleGroup(talentEx.jobs)"
+                                     ng-class="{active: isGroupShown(talentEx.jobs)}">
+                               <i class="icon" ng-class="isGroupShown(talentEx.jobs) ? 'ion-minus' : 'ion-plus'"></i>
+                             &nbsp;
+                             <b>工作经历</b>
+                           </ion-item>
+                           <ion-item class="item-accordion"
+                                     ng-repeat="job in talentEx.jobs"
+                                     ng-show="isGroupShown(talentEx.jobs)">
+                             <p><b>时间:</b>{{job.qssj| date:"yyyy-MM-dd"}}至{{job.jzsj| date:"yyyy-MM-dd"}}</p>
+                             <p><b>单位:</b><span ng-bind-html="job.dwmc"></span></p>
+                            <p><b>职位:</b><span ng-bind-html="job.zwmc"></span></p>
+                           </ion-item>
+                           <ion-item class="item-stable"
+                                     ng-click="toggleGroup(talentEx.skill)"
+                                     ng-class="{active: isGroupShown(talentEx.skill)}">
+                               <i class="icon" ng-class="isGroupShown(talentEx.skill) ? 'ion-minus' : 'ion-plus'"></i>
+                             &nbsp;
+                             <b>技能专长</b>
+                           </ion-item>
+                           <ion-item class="item-accordion"
+                                     ng-repeat="ski in talentEx.skill"
+                                     ng-show="isGroupShown(talentEx.skill)">
+                             <p><b>技能名称:</b><span ng-bind-html="ski.tcmc"></span></p>
+                             <p><b>技能水平:</b><span ng-bind-html="ski.tcsp"></span></p>
+                           </ion-item>
+                           <ion-item class="item-stable"
+                                     ng-click="toggleGroup(talentEx.fosters)"
+                                     ng-class="{active: isGroupShown(talentEx.fosters)}">
+                               <i class="icon" ng-class="isGroupShown(talentEx.fosters) ? 'ion-minus' : 'ion-plus'"></i>
+                             &nbsp;
+                             <b>培训经历</b>
+                           </ion-item>
+                           <ion-item class="item-accordion"
+                                     ng-repeat="foster in talentEx.fosters"
+                                     ng-show="isGroupShown(talentEx.fosters)">
+                               <p><b>主办机构:</b><span ng-bind-html="foster.zbjg"></span></p>
+                              <p><b>培训课程:</b><span ng-bind-html="foster.pxkc"></span></p>
+                           </ion-item>
+	       </div>
+        </div>
+         <br>
+  </ion-content>	
+  </ion-view>

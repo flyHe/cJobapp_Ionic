@@ -1,0 +1,29 @@
+<ion-view>
+
+  <ion-content class="has-header">
+  <br><br>
+   <a href="#/app/talentEx/{{result.id}}" class="item item-icon-right"  ng-repeat="result in results">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="positive">{{result.name}}</h2>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col">
+                        <h4 ng-bind-html="result.proName">男</h4>
+                    </div>
+                </div>
+
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+             <ion-infinite-scroll
+            on-infinite="loadMore()"
+            ng-if="moreDataCanBeLoaded"
+            icon="ion-loading-c"
+            distance="1%">
+         </ion-infinite-scroll>
+         <p style="color: lightskyblue;text-align: center" ng-if="!moreDataCanBeLoaded">没有更多的内容啦</p>
+          <br>
+  </ion-content>
+  </ion-view>
